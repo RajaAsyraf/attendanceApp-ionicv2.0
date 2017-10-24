@@ -5,19 +5,23 @@ import { MyApp } from './app.component';
 
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
-import { HomePage } from '../pages/home/home';
+import { AttendancePage } from '../pages/attendance/attendance';
 import { TabsPage } from '../pages/tabs/tabs';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+
+import { PunchInService } from '../services/punchIn.service';
+import { PunchOutPage } from '../pages/punch-out/punch-out';
 
 @NgModule({
   declarations: [
     MyApp,
     AboutPage,
     ContactPage,
-    HomePage,
-    TabsPage
+    AttendancePage,
+    TabsPage,
+    PunchOutPage
   ],
   imports: [
     BrowserModule,
@@ -28,13 +32,14 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     MyApp,
     AboutPage,
     ContactPage,
-    HomePage,
-    TabsPage
+    AttendancePage,
+    TabsPage,
+    PunchOutPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    [{provide: ErrorHandler, useClass: IonicErrorHandler}, PunchInService ]
   ]
 })
 export class AppModule {}
